@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            background-color: black;
+            margin: 0px;
+            user-select: none;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        [quadrado] {
+            top: 15px;
+            color: white;
+            border-radius: 10px;
+            position: absolute;
+            width: 330px;
+            height: 250px;
+
+            /* aspect-ratio: 1/1; */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid white;
+            box-sizing: border-box;
+        }
+
+        #nummassa {
+            font-size: 40pt;
+            position: absolute;
+            font-weight: bold;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            top: 5px;
+        }
+
+        #simbolo {
+            font-size: 80pt;
+            position: absolute;
+            font-weight: bold;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        #nome {
+            font-size: 22pt;
+            position: absolute;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            bottom: 5px;
+        }
+
+        [gerar],
+        [reiniciar] {
+            border: 3px solid white;
+            box-sizing: border-box;
+            border-radius: 10px;
+            color: white;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 16pt;
+            width: 100px;
+            height: 100px;
+            font-weight: bold;
+        }
+
+        [gerar] {
+            cursor: pointer;
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: green;
+            right: 15px;
+            top: 280px;
+        }
+
+        [reiniciar] {
+            cursor: pointer;
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: red;
+            left: 15px;
+            top: 280px;
+        }
+
+        [historico] {
+            overflow-y: auto;
+            /* scroll vertical */
+            box-sizing: border-box;
+            font-size: 30pt;
+            padding: 5px;
+            position: absolute;
+            bottom: 0px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 100%;
+            height: 340px;
+
+            border: 1px solid white;
+            color: white;
+
+            text-align: center;
+            flex-wrap: wrap;
+            /* permite quebrar linha */
+            word-break: break-word;
+            /* quebra texto longo */
+        }
+
+        #idquant {
+            position: absolute;
+            font-size: 14pt;
+            color: white;
+            font-family: 'Courier New', Courier, monospace;
+            top: 320px;
+            font-weight: bold;
+            display: flex;
+            text-align: center;        
+        }
+    </style>
+</head>
+
+<body>
+    <div historico id="idhist"></div>
+
+    <div gerar onclick="bingo('sortear')">SORTEAR</div>
+    <div reiniciar onclick="bingo('reiniciar')">REIN.</div>
+    <div quadrado>
+        <div id="nummassa"></div>
+        <div id="simbolo"></div>
+        <div id="nome"></div>
+    </div>
+    <div id="idquant"></div>
+</body>
+
+</html>
+
+<script>
+    const misturar = function (o) {
+        for (var j, x, i = o.length; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+        return o;
+    }
+
+    const elementos = [
+        { codigo: "H", nome: "Hidrogênio", numero: 1 },
+        { codigo: "He", nome: "Hélio", numero: 2 },
+        { codigo: "Li", nome: "Lítio", numero: 3 },
+        { codigo: "Be", nome: "Berílio", numero: 4 },
+        { codigo: "B", nome: "Boro", numero: 5 },
+        { codigo: "C", nome: "Carbono", numero: 6 },
+        { codigo: "N", nome: "Nitrogênio", numero: 7 },
+        { codigo: "O", nome: "Oxigênio", numero: 8 },
+        { codigo: "F", nome: "Flúor", numero: 9 },
+        { codigo: "Ne", nome: "Neônio", numero: 10 },
+        { codigo: "Na", nome: "Sódio", numero: 11 },
+        { codigo: "Mg", nome: "Magnésio", numero: 12 },
+        { codigo: "Al", nome: "Alumínio", numero: 13 },
+        { codigo: "Si", nome: "Silício", numero: 14 },
+        { codigo: "P", nome: "Fósforo", numero: 15 },
+        { codigo: "S", nome: "Enxofre", numero: 16 },
+        { codigo: "Cl", nome: "Cloro", numero: 17 },
+        { codigo: "Ar", nome: "Argônio", numero: 18 },
+        { codigo: "K", nome: "Potássio", numero: 19 },
+        { codigo: "Ca", nome: "Cálcio", numero: 20 },
+        { codigo: "Sc", nome: "Escândio", numero: 21 },
+        { codigo: "Ti", nome: "Titânio", numero: 22 },
+        { codigo: "V", nome: "Vanádio", numero: 23 },
+        { codigo: "Cr", nome: "Cromo", numero: 24 },
+        { codigo: "Mn", nome: "Manganês", numero: 25 },
+        { codigo: "Fe", nome: "Ferro", numero: 26 },
+        { codigo: "Co", nome: "Cobalto", numero: 27 },
+        { codigo: "Ni", nome: "Níquel", numero: 28 },
+        { codigo: "Cu", nome: "Cobre", numero: 29 },
+        { codigo: "Zn", nome: "Zinco", numero: 30 },
+        { codigo: "Ga", nome: "Gálio", numero: 31 },
+        { codigo: "Ge", nome: "Germânio", numero: 32 },
+        { codigo: "As", nome: "Arsênio", numero: 33 },
+        { codigo: "Se", nome: "Selênio", numero: 34 },
+        { codigo: "Br", nome: "Bromo", numero: 35 },
+        { codigo: "Kr", nome: "Criptônio", numero: 36 },
+        { codigo: "Rb", nome: "Rubídio", numero: 37 },
+        { codigo: "Sr", nome: "Estrôncio", numero: 38 },
+        { codigo: "Y", nome: "Ítrio", numero: 39 },
+        { codigo: "Zr", nome: "Zircônio", numero: 40 },
+        { codigo: "Nb", nome: "Nióbio", numero: 41 },
+        { codigo: "Mo", nome: "Molibdênio", numero: 42 },
+        { codigo: "Tc", nome: "Tecnécio", numero: 43 },
+        { codigo: "Ru", nome: "Rutênio", numero: 44 },
+        { codigo: "Rh", nome: "Ródio", numero: 45 },
+        { codigo: "Pd", nome: "Paládio", numero: 46 },
+        { codigo: "Ag", nome: "Prata", numero: 47 },
+        { codigo: "Cd", nome: "Cádmio", numero: 48 },
+        { codigo: "In", nome: "Índio", numero: 49 },
+        { codigo: "Sn", nome: "Estanho", numero: 50 },
+        { codigo: "Sb", nome: "Antimônio", numero: 51 },
+        { codigo: "Te", nome: "Telúrio", numero: 52 },
+        { codigo: "I", nome: "Iodo", numero: 53 },
+        { codigo: "Xe", nome: "Xenônio", numero: 54 },
+        { codigo: "Cs", nome: "Césio", numero: 55 },
+        { codigo: "Ba", nome: "Bário", numero: 56 },
+        { codigo: "La", nome: "Lantânio", numero: 57 },
+        { codigo: "Ce", nome: "Cério", numero: 58 },
+        { codigo: "Pr", nome: "Praseodímio", numero: 59 },
+        { codigo: "Nd", nome: "Neodímio", numero: 60 },
+        { codigo: "Pm", nome: "Promécio", numero: 61 },
+        { codigo: "Sm", nome: "Samário", numero: 62 },
+        { codigo: "Eu", nome: "Európio", numero: 63 },
+        { codigo: "Gd", nome: "Gadolínio", numero: 64 },
+        { codigo: "Tb", nome: "Térbio", numero: 65 },
+        { codigo: "Dy", nome: "Disprósio", numero: 66 },
+        { codigo: "Ho", nome: "Hólmio", numero: 67 },
+        { codigo: "Er", nome: "Érbio", numero: 68 },
+        { codigo: "Tm", nome: "Túlio", numero: 69 },
+        { codigo: "Yb", nome: "Itérbio", numero: 70 },
+        { codigo: "Lu", nome: "Lutécio", numero: 71 },
+        { codigo: "Hf", nome: "Háfnio", numero: 72 },
+        { codigo: "Ta", nome: "Tântalo", numero: 73 },
+        { codigo: "W", nome: "Tungstênio", numero: 74 },
+        { codigo: "Re", nome: "Rênio", numero: 75 },
+        { codigo: "Os", nome: "Ósmio", numero: 76 },
+        { codigo: "Ir", nome: "Irídio", numero: 77 },
+        { codigo: "Pt", nome: "Platina", numero: 78 },
+        { codigo: "Au", nome: "Ouro", numero: 79 },
+        { codigo: "Hg", nome: "Mercúrio", numero: 80 },
+        { codigo: "Tl", nome: "Tálio", numero: 81 },
+        { codigo: "Pb", nome: "Chumbo", numero: 82 },
+        { codigo: "Bi", nome: "Bismuto", numero: 83 },
+        { codigo: "Po", nome: "Polônio", numero: 84 },
+        { codigo: "At", nome: "Astato", numero: 85 },
+        { codigo: "Rn", nome: "Radônio", numero: 86 },
+        { codigo: "Fr", nome: "Frâncio", numero: 87 },
+        { codigo: "Ra", nome: "Rádio", numero: 88 },
+        { codigo: "Ac", nome: "Actínio", numero: 89 },
+        { codigo: "Th", nome: "Tório", numero: 90 },
+        { codigo: "Pa", nome: "Protactínio", numero: 91 },
+        { codigo: "U", nome: "Urânio", numero: 92 },
+        { codigo: "Np", nome: "Neptúnio", numero: 93 },
+        { codigo: "Pu", nome: "Plutônio", numero: 94 },
+        { codigo: "Am", nome: "Amerício", numero: 95 },
+        { codigo: "Cm", nome: "Cúrio", numero: 96 },
+        { codigo: "Bk", nome: "Berquélio", numero: 97 },
+        { codigo: "Cf", nome: "Califórnio", numero: 98 },
+        { codigo: "Es", nome: "Einstênio", numero: 99 },
+        { codigo: "Fm", nome: "Férmio", numero: 100 },
+        { codigo: "Md", nome: "Mendelévio", numero: 101 },
+        { codigo: "No", nome: "Nobélio", numero: 102 },
+        { codigo: "Lr", nome: "Laurêncio", numero: 103 },
+        { codigo: "Rf", nome: "Rutherfórdio", numero: 104 },
+        { codigo: "Db", nome: "Dúbnio", numero: 105 },
+        { codigo: "Sg", nome: "Seabórgio", numero: 106 },
+        { codigo: "Bh", nome: "Bóhrio", numero: 107 },
+        { codigo: "Hs", nome: "Hássio", numero: 108 },
+        { codigo: "Mt", nome: "Meitnério", numero: 109 },
+        { codigo: "Ds", nome: "Darmstádio", numero: 110 },
+        { codigo: "Rg", nome: "Roentgênio", numero: 111 },
+        { codigo: "Cn", nome: "Copernício", numero: 112 },
+        { codigo: "Nh", nome: "Nihônio", numero: 113 },
+        { codigo: "Fl", nome: "Fleróvio", numero: 114 },
+        { codigo: "Mc", nome: "Moscóvio", numero: 115 },
+        { codigo: "Lv", nome: "Livermório", numero: 116 },
+        { codigo: "Ts", nome: "Tenessino", numero: 117 },
+        { codigo: "Og", nome: "Oganessônio", numero: 118 }
+    ];
+
+    var hist = [];
+    var vbingo = elementos.slice();
+    var nelem = 0;
+
+    var historico = document.getElementById("idhist");
+
+    misturar(vbingo)
+
+    historico.scrollTo({
+        top: historico.scrollHeight,
+        behavior: "smooth"
+    });
+
+
+    function bingo(comando) {
+        if (comando == 'sortear') {
+            if (nelem == elementos.length) {
+                document.getElementById('idquant').innerHTML = "ACABOU!<br>REINICIAR!";
+            } else {
+                document.getElementById('nummassa').innerHTML = vbingo[0].numero;
+                document.getElementById('simbolo').innerHTML = vbingo[0].codigo;
+                document.getElementById('nome').innerHTML = vbingo[0].nome;
+                hist.push(vbingo[0].codigo)
+                document.getElementById('idhist').innerHTML = hist.join(", ")
+                historico.scrollTop = historico.scrollHeight;
+                vbingo.shift();
+                ++nelem;
+                document.getElementById('idquant').innerHTML = nelem + "/" + elementos.length;
+            }
+        }
+        else if (comando == 'reiniciar') {
+            document.getElementById('nummassa').innerHTML = '';
+            document.getElementById('simbolo').innerHTML = '';
+            document.getElementById('nome').innerHTML = '';
+            document.getElementById('idhist').innerHTML = '';
+            document.getElementById('idquant').innerHTML = "0/118";
+            vbingo = elementos.slice();
+            hist = [];
+            nelem = 0;
+            misturar(vbingo)
+        }
+    }
+    document.getElementById('idquant').innerHTML = "0/118";
+</script>
