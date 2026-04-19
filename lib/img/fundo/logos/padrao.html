@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		* {
+			/* cursor: url(../../img/util/mouse.png), auto; */
+			user-select: none;
+		}
+
+		canvas {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			left: 0;
+			top: 0;
+		}
+	</style>
+
+</head>
+
+<body>
+	<canvas id="canvas"></canvas>
+
+	<script>
+		var height = window.innerHeight;
+		var width = window.innerWidth;
+
+		var canvas = document.getElementById("canvas");
+		var ctx = canvas.getContext("2d");
+
+		canvas.width = width;
+		canvas.height = height;
+
+		var btcImg = new Image();
+		btcImg.src = "padrao.png";
+
+		var btcs = [];
+		for (i = 0; i < 5; i++) {
+			btcs.push({
+				x: Math.random() * width,
+				y: Math.random() * height,
+				size: Math.random() * 0.5 + 0.1,
+				angle: Math.random() * Math.PI * 2,
+				dir: Math.random() * Math.PI * 2
+			});
+		}
+
+		var tick = 0;
+		function render() {
+			tick++;
+			ctx.clearRect(0, 0, width, height);
+
+			for (b in btcs) {
+				btcs[b].x += Math.cos(btcs[b].dir) * 0.2 / btcs[b].size;
+				btcs[b].y += Math.sin(btcs[b].dir) * 0.2 / btcs[b].size;
+				btcs[b].angle += 0.01 / btcs[b].size;
+				drawRotated(btcImg, btcs[b].x, btcs[b].y, btcs[b].size, btcs[b].angle);
+
+				if (btcs[b].y < 0) {
+					btcs[b].dir = -btcs[b].dir;
+				} else if (btcs[b].y > height) {
+					btcs[b].dir = -btcs[b].dir;
+				}
+				if (btcs[b].x < 0) {
+					btcs[b].dir = -btcs[b].dir - Math.PI;
+				} else if (btcs[b].x > width) {
+					btcs[b].dir = -btcs[b].dir - Math.PI;
+				}
+			}
+
+			window.requestAnimationFrame(render);
+		}
+
+		render();
+
+		function drawRotated(image, x, y, scale, rotation) {
+			ctx.setTransform(scale, 0, 0, scale, x, y);
+			ctx.rotate(rotation);
+			ctx.drawImage(image, -image.width / 2, -image.height / 2);
+			ctx.setTransform(1, 0, 0, 1, 0, 0);
+		}
+
+		document.addEventListener("contextmenu", function (e) {
+			e.preventDefault();
+		}, false);
+	</script>
+
+
+</body>
+
+</html>
