@@ -1,0 +1,96 @@
+/*      CORES - VERSÃO: 1.0     |       REVISÃO: 22/01/24     */
+
+button {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff !important;
+    padding: 10px;
+    box-sizing: border-box;
+    border: none;
+    margin: 2px;
+    border-radius: 5px;
+    text-shadow: 1px 1px 1px black;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-family: 'Fjalla-One', sans-serif;
+    font-size: 20px;
+    border: 3px outset var(--bot);
+    transition: all 0.05s;
+}
+
+button>img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* ou cover */
+    aspect-ratio: 1 / 1;
+    filter: drop-shadow(3px 3px 3px rgba(0, 0, 0, 0.5));
+}
+
+button>img[sombra] {
+    filter: drop-shadow(3px 3px 3px rgba(0, 0, 0, 0.5));
+}
+
+button:disabled,
+button[disabled] {
+    cursor: no-drop !important;
+    background-color: #999999 !important;
+    color: #cecece !important;
+    --bot: #cecece !important;
+}
+
+button:disabled:active,
+button[disabled]:active {
+    cursor: no-drop !important;
+    border: 3px outset #cecece !important;
+    background-color: #999999 !important;
+    color: #cecece !important;
+}
+
+button:disabled>img,
+button[disabled]>img {
+    opacity: 0.3;
+}
+
+button>img[dual="img"] {
+    position: absolute;
+    left: 5px;
+    height: 75%;
+    filter: drop-shadow(3px 3px 3px rgba(0, 0, 0, 0.5));
+}
+
+button>div[dual="txt"] {
+    position: absolute;
+    right: 5px;
+    height: 100%;
+    width: 74%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    line-height: 1;
+}
+
+button[bola] {
+    border-radius: 100%;
+    border: 5px outset var(--bot);
+}
+
+button[bola]:active {
+    border-radius: 100%;
+    border: 3px outset var(--bot);
+}
+
+button:disabled, button[bola]:disabled {
+    cursor: no-drop !important;
+    background-color: #999999 !important;
+    color: #cecece !important;
+    --bot: #cecece !important;
+}
+
+button:disabled:active, button[bola]:disabled:active {
+    cursor: no-drop !important;
+    border: 4px outset #cecece !important;
+    background-color: #999999 !important;
+    color: #cecece !important;
+}

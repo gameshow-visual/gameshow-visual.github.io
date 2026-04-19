@@ -1,0 +1,245 @@
+/* TEMPO */
+
+[btempo] {
+	z-index: 11;
+	position: absolute;
+	overflow: hidden;
+	transition: all .5s;
+	transform: scale(0);
+	border-radius: 5px;
+	border: 4px solid white;
+	background-image: repeating-linear-gradient(45deg, #000000 0, #000000 1px, transparent 0, transparent 50%);
+	background-size: 10px 10px;
+	background-color: #282828;
+	filter: drop-shadow(0px 0px 2px rgba(0, 0, 0, 1));
+	box-sizing: border-box;
+}
+
+[btempo]::before,
+[btempo]::after {
+	content: '';
+	height: 30%;
+	position: absolute;
+	background: rgba(255, 255, 255, 0.6);
+	top: 15%;
+	border-radius: 99px;
+	z-index: 1;
+}
+
+[btempo]::before {
+	width: 20%;
+	right: 12%;
+}
+
+[btempo]::after {
+	width: 5%;
+	right: 3%;
+}
+
+[btempo]>[btbarra] {
+	overflow: hidden;
+	height: 100%;
+	animation: btemprest calc(var(--tempo) * 1s) linear forwards;
+	transform-origin: center left;
+	background: #dc0000;
+	border-radius: 1px;
+	/* transform: scaleX(0%); */
+}
+
+@keyframes btemprest {
+	to {
+		transform: scaleX(0);
+		/* transform: scaleX(100%); */
+	}
+}
+
+[btempcont] {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: white;
+	font-family: 'Chau-Philomene-One', sans-serif;
+	font-size: 30pt;
+	z-index: 1;
+	filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 1));
+}
+
+/* BARRA TEMPO VERTICAL */
+
+[bvtempo] {
+	z-index: 11;
+	position: absolute;
+	overflow: hidden;
+	transition: all .5s;
+	transform: scale(0);
+	border-radius: 5px;
+	border: 4px solid white;
+	background-image: repeating-linear-gradient(45deg, #000000 0, #000000 1px, transparent 0, transparent 50%);
+	background-size: 10px 10px;
+	background-color: #282828;
+	filter: drop-shadow(0px 0px 2px rgba(0, 0, 0, 1));
+	box-sizing: border-box;
+}
+
+[bvtempo]::before,
+[bvtempo]::after {
+	content: '';
+	height: 24%;
+	width: 15%;
+	position: absolute;
+	background: rgba(255, 255, 255, 0.6);
+	top: 1%;
+	border-radius: 99px;
+	z-index: 1;
+}
+
+[bvtempo]::before {
+	height: 12%;
+	right: 10%;
+}
+
+[bvtempo]::after {
+	width: 14%;
+	right: 10%;
+	top: 15%
+}
+
+[bvtempo]>[bvtbarra] {
+	overflow: hidden;
+	height: 100%;
+	animation: bvtemprest calc(var(--tempo) * 1s) linear forwards;
+	transform-origin: center bottom;
+	background: #dc0000;
+	border-radius: 1px;
+	/* transform: scaleX(0%); */
+}
+
+@keyframes bvtemprest {
+	to {
+		transform: scaleY(0);
+		/* transform: scaleX(100%); */
+	}
+}
+
+[bvtempcont] {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: white;
+	font-family: 'Chau-Philomene-One', sans-serif;
+	font-size: 30pt;
+	z-index: 1;
+	filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 1));
+}
+
+/* TUTORIAL COM TIMER */
+
+[ttbtempo] {
+	z-index: 11;
+	position: absolute;
+	overflow: hidden;
+	width: 363px;
+	height: 20px;
+	bottom: 5px;
+	transition: all .5s;
+	transform: scale(0);
+	border-radius: 5px;
+	border: 4px solid white;
+	background-image: repeating-linear-gradient(45deg, #000000 0, #000000 1px, transparent 0, transparent 50%);
+	background-size: 10px 10px;
+	background-color: #282828;
+	filter: drop-shadow(0px 0px 2px rgba(0, 0, 0, 1));
+	box-sizing: border-box;
+}
+
+[ttbtempo]::before,
+[ttbtempo]::after {
+	content: '';
+	height: 30%;
+	position: absolute;
+	background: rgba(255, 255, 255, 0.6);
+	top: 15%;
+	border-radius: 99px;
+	z-index: 1;
+}
+
+[ttbtempo]::before {
+	width: 20%;
+	right: 12%;
+}
+
+[ttbtempo]::after {
+	width: 5%;
+	right: 3%;
+}
+
+[ttbtempo]>[barra] {
+	overflow: hidden;
+	height: 100%;
+	animation: tempobarra calc(var(--tempo) * 1s) linear forwards;
+	transform-origin: center left;
+	background: #0096dc;
+	border-radius: 1px;
+	transform: scaleX(0%);
+}
+
+@keyframes tempobarra {
+	to {
+		transform: scaleX(100%);
+	}
+}
+
+#tutorial {
+	transform: scale(1);
+	visibility: hidden;
+	opacity: 0;
+	z-index: 10;
+	transition: all .5s;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#tutvideo {
+	position: absolute;
+	border-radius: 10px;
+	filter: drop-shadow(0px 0px 5px rgba(255, 255, 255, 1));
+	/* top: 5px; */
+	object-fit: cover;
+}
+
+[tutprogresso] {
+	position: absolute;
+	height: 10px;
+	width: 318px;
+	border: solid 3px rgba(255, 255, 255, 1);
+	margin: 5px;
+	/* transform: translate(0px, 0px); */
+	background-color: rgba(255, 255, 255, 0.25);
+	/* box-shadow: 3px 3px 3px black; */
+	bottom: 0px;
+	z-index: 100;
+	border-radius: 4px;
+	visibility: hidden;
+	opacity: 0;
+	transition: all .5s, opacity .5s, transform .5s;
+}
+
+[tutprogresso]>div {
+	transition: all .5s, opacity .5s, transform .5s;
+	position: absolute;
+	background-color: rgba(0, 140, 255, 1);
+	color: #fff;
+	height: 100%;
+	text-align: right;
+	width: 0%;
+	/* border-radius: 6px 0px 0px 6px; */
+}
