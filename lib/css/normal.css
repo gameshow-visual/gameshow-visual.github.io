@@ -1,0 +1,40 @@
+/* PADRÃO */
+body {
+    margin: 0px;
+    user-select: none;
+    width: 100vw;
+    height: 100vh;
+    font-family: Roboto-3, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+button {
+    font-family: Roboto-3, sans-serif !important;
+}
+
+/* LOGOS */
+[fundo="logo"] {
+    background-color: #022da5 !important;
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.5)),
+        url("../img/fundo/logo.png");
+    background-attachment: fixed;
+}
+
+[fundo="video"] {
+    background-color: #022da5 !important;
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.5)),
+        url("../img/fundo/logo-para-video-2.png");
+    background-attachment: fixed;
+}
+
+[meio] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
