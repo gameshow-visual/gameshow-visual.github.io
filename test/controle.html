@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Controle</title>
+<style>
+body {
+    text-align: center;
+    font-family: Arial;
+}
+button {
+    font-size: 40px;
+    padding: 30px;
+    margin-top: 100px;
+}
+</style>
+</head>
+<body>
+
+<h1>Aperte rápido!</h1>
+<button onclick="responder()">RESPONDER</button>
+
+<script>
+function responder() {
+    fetch('estado.txt', {
+        method: 'POST',
+        body: 'Jogador clicou!'
+    });
+}
+</script>
+
+</body>
+</html>

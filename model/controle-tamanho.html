@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../lib/css/padrao.css">
+    <script type="text/javascript" src="../lib/javascript/padrao.js"></script>
+
+    <style>
+        body {
+            color: white;
+        }
+
+        /* Tablets em modo Retrato */
+        @media screen and (min-width: 768px) and (max-width: 991px) and (orientation: portrait) {
+            body {
+                font-size: 16px;
+            }
+
+            [tamanho]::before {
+                content: "TABLET EM PÉ";
+            }
+        }
+
+        /* Tablets em modo Paisagem */
+        @media screen and (min-width: 768px) and (max-width: 1280px) and (orientation: landscape) {
+            body {
+                font-size: 16px;
+            }
+
+            [tamanho]::before {
+                content: "TABLET DEITADO";
+            }
+        }
+
+        /* Celular em modo Retrato (Portrait) */
+        @media screen and (max-width: 767px) and (orientation: portrait) {
+            body {
+                font-size: 14px;
+            }
+
+            button {
+                width: 90%;
+                position: absolute;
+            }
+
+            [tamanho]::before {
+                content: "CELULAR EM PÉ";
+            }
+        }
+
+        /* Celular em modo Paisagem (Landscape) */
+        @media screen and (min-width: 481px) and (max-width: 767px) and (orientation: landscape) {
+            body {
+                font-size: 14px;
+            }
+
+            button {
+                width: 90%;
+                position: absolute;
+            }
+
+            [tamanho]::before {
+                content: "CELULAR DEITADO";
+            }
+        }
+
+
+        /* ===== TABLET (entre 768px e 1024px) ===== */
+        /* @media (max-width: 1024px) and (min-width: 768px) {
+            body {
+                font-size: 16px;
+            }
+
+            [tamanho]::before {
+                content: "tablet";
+            }
+        } */
+
+        /* ===== CELULAR (até 767px) ===== */
+        /* @media (max-width: 767px) {
+            body {
+                font-size: 14px;
+            }
+
+            button {
+                width: 90%;
+                position: absolute;
+            }
+
+            [tamanho]::before {
+                content: "celular";
+            }
+        } */
+
+        [tablet] {
+            width: 768px;
+            height: 1024px;
+            box-sizing: border-box;
+            border: 2px solid green;
+        }
+    </style>
+</head>
+
+<body fundo="logo">
+    <div modo="site">
+        <div tamanho></div>
+        <!-- <div tablet></div> -->
+    </div>
+</body>

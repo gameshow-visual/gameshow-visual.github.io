@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../lib/css/padrao.css">
+    <script type="text/javascript" src="../lib/javascript/padrao.js"></script>
+
+    <style>
+
+        [tamanho] {
+            color: white;
+            position: absolute;
+            top: 0px;            
+        }
+        #novotamanho {
+            border: 5px solid red;
+            box-sizing: border-box;
+        }
+
+        /* ===== PADRÃO (Desktop primeiro) ===== */
+        body {
+            font-size: 18px;
+        }
+
+        [tamanho]::before {
+            content: "computador";
+        }
+
+        /* ===== TABLET (entre 768px e 1024px) ===== */
+        @media (max-width: 1024px) and (min-width: 768px) {
+            body {
+                font-size: 16px;
+            }
+
+            [tamanho]::before {
+                content: "tablet";
+            }
+        }
+
+        /* ===== CELULAR (até 767px) ===== */
+        @media (max-width: 767px) {
+            body {
+                font-size: 14px;
+            }
+
+            button {
+                width: 90%;
+                position: absolute;
+            }
+
+            [tamanho]::before {
+                content: "celular";
+            }
+        }
+    </style>
+</head>
+
+<script>
+
+    // document.addEventListener("click", function () {
+    //     let el = document.documentElement;
+
+    //     if (el.requestFullscreen) {
+    //         el.requestFullscreen();
+    //     } else if (el.webkitRequestFullscreen) { // Safari
+    //         el.webkitRequestFullscreen();
+    //     } else if (el.msRequestFullscreen) { // IE/Edge antigo
+    //         el.msRequestFullscreen();
+    //     }
+    // });
+
+    function notificar(titulo, mensagem) {
+        Notification.requestPermission().then(permission => {
+            if (permission === "granted") {
+                new Notification(titulo, {
+                    body: mensagem
+                });
+            }
+        });
+    }
+
+    function abrirTelaCheia() {
+        document.documentElement.requestFullscreen();
+    }
+
+    // Detecta mudança de fullscreen
+    document.addEventListener("fullscreenchange", () => {
+        const btn = document.getElementById("btnFullscreen");
+
+        if (document.fullscreenElement) {
+            // Está em tela cheia → esconde o botão
+            btn.style.display = "none";
+        } else {
+            // Saiu da tela cheia → mostra o botão novamente
+            btn.style.display = "block";
+        }
+    });
+</script>
+
+<body fundo="logo">
+    <div layout style="border: 5px solid red; box-sizing: border-box;">
+        <div tamanho></div>
+        <!-- <div style="position: absolute; width: 100px; height: 100px; background-color: white;"></div> -->
+        <button id="btnFullscreen" onclick="abrirTelaCheia()">Tela Cheia</button>
+    </div>
+</body>

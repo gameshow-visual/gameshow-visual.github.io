@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../lib/css/padrao.css">
+    <script type="text/javascript" src="../lib/javascript/padrao.js"></script>
+
+    <style>
+        body {
+            color: white;
+        }
+
+        /* 🔹 RESET básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 🔹 PADRÃO = DESKTOP */
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+    background: lightblue;
+    text-align: center;
+}
+
+button {
+    padding: 15px 30px;
+    font-size: 18px;
+}
+
+/* 🔹 TABLET (até 1024px) */
+@media (max-width: 1024px) {
+    .container {
+        width: 90%;
+        background: lightgreen;
+    }
+
+    button {
+        font-size: 16px;
+        padding: 12px 25px;
+    }
+}
+
+/* 🔹 CELULAR (até 768px) */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        background: lightcoral;
+    }
+
+    h1 {
+        font-size: 22px;
+    }
+
+    button {
+        width: 100%; /* botão ocupa toda largura */
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+    </style>
+</head>
+
+<body fundo="logo">
+    <div modo="site">
+    <div class="container">
+        <h1>Título</h1>
+        <p>Conteúdo aqui...</p>
+        <button>Botão</button>
+    </div>
+    </div>
+</body>

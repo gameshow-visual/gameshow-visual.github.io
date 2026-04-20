@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="../lib/css/padrao.css">
+    <link rel="icon" href="../lib/img/logo/favicon.ico" type="image/x-icon">
+    <!-- <script type="text/javascript" src="../lib/javascript/padrao.js"></script> -->
+
+    <style>
+        [carta],
+        [frente],
+        [frente]>[fundo],
+        [atras],
+        [info] {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+        }
+
+        [pcarta] {
+            position: relative;
+            float: left;
+            margin: 1px;
+            width: var(--clar);
+            height: var(--calt);
+            aspect-ratio: 7 / 10;
+            perspective: 600px;
+            z-index: 1;
+            cursor: pointer;
+        }
+
+        [frente],
+        [atras] {
+            border: var(--cbor) solid white;
+            border-radius: var(--crad);
+            transform-style: preserve-3d;
+            backface-visibility: hidden;
+        }
+
+        [atras] {
+            transform: rotateY(180deg);
+        }
+
+        [pcarta],
+        [carta] {
+            transform-style: preserve-3d;
+            transition: opacity .6s, transform .6s, visibility .6s;
+        }
+
+        [frente]>[fundo] {
+            opacity: 0.1;
+            background-image: linear-gradient(135deg, #959595 25%, transparent 25%), linear-gradient(225deg, #959595 25%, transparent 25%), linear-gradient(45deg, #959595 25%, transparent 25%), linear-gradient(315deg, #959595 25%, #e5e5f7 25%);
+            background-position: 15px 0, 15px 0, 0 0, 0 0;
+            background-size: 30px 30px;
+            background-repeat: repeat;
+        }
+
+        [info] {
+            /* font-family: 'Chau-Philomene-One', sans-serif; */
+            font-family: "Patrick Hand", cursive;
+            font-size: 60pt;
+            filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.5));
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        [frente]>[info] {
+            color: white;
+        }
+
+        [atras]>[info] {
+            color: black;
+        }
+
+        [atras]>* {
+            filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.5));
+        }
+
+
+        [frente]>[info] {
+            transition: all 0.25s;
+        }
+
+        [frente]>img,
+        [atras]>img {
+            width: 95%;
+            z-index: 0;
+        }
+
+        :root {
+            --calt: 75%;
+            --cbor: 20px;
+            --crad: 10px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body fundo="logo">
+    <div pcarta id='cn1'>
+        <div carta id="c1" onclick="carta()">
+            <div frente cor="preto">
+                <div fundo></div>
+                <img src="bola8.png">
+            </div>
+            <div atras id="corcarta">
+                <div info id="fala"></div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+<script>
+    const sorteio = ['Sim!', 'Claro!', 'Com certeza!', 'Acho que sim!', 'Provável!', 'Talvez!', 'Não sei!', 'Tente de novo!', 'Pergunte depois!', 'Não dá pra ver!', 'Não!', 'Acho que não!', 'Duvido!', 'Melhor não!', 'Sem chance!']
+    const sorcor = ['#6bff6b', '#6bff6b', '#6bff6b', '#6bff6b', '#6bff6b', '#ffe96b', '#ffe96b', '#ffe96b', '#ffe96b', '#ffe96b', '#ff6b6b', '#ff6b6b', '#ff6b6b', '#ff6b6b', '#ff6b6b']
+    const numrand = Math.floor(Math.random() * sorteio.length) + 1;   /* Selecionar pasta aleatório */
+
+    document.getElementById('fala').innerHTML = sorteio[numrand - 1]
+    document.getElementById('corcarta').style.backgroundColor = sorcor[numrand - 1]
+
+    function carta() {
+        setTimeout(() => {
+            var vcarta = document.getElementById("c1").style
+            if (vcarta.transform == "rotateY(180deg)") {
+                vcarta.transform = "rotateY(-30deg)"
+                setTimeout(function () {
+                    vcarta.transform = "rotateY(0deg)"
+                }, 500)
+                setTimeout(() => {
+                    const numrand = Math.floor(Math.random() * sorteio.length) + 1;   /* Selecionar pasta aleatório */
+                    document.getElementById('fala').innerHTML = sorteio[numrand - 1]
+                    document.getElementById('corcarta').style.backgroundColor = sorcor[numrand - 1]
+                }, 1000);
+            } else {
+                vcarta.transform = "rotateY(210deg)"
+                setTimeout(function () {
+                    vcarta.transform = "rotateY(180deg)"
+                }, 500)
+            }
+        }, 50);
+    }
+
+
+
+</script>
