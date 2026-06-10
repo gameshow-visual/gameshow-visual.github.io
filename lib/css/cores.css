@@ -1,218 +1,79 @@
-/*      CORES - VERSÃO: 1.0     |       REVISÃO: 22/01/24     */
+/* BETA - 03/06/26 */
 
-/* AMARELO */
-.amarelo,
-[cor=amarelo],
-button[amarelo] {
-    background: #ffd400;
-    --bot: #eec600;
+/* COR PADRÃO */
+@property --cor-cor {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #9e9e9e;
 }
 
-button[amarelo]:active {
-    background: #fff6c1;
+@property --cor-bor {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #858585;
 }
 
-/* AZUL */
-.azul,
-[cor=azul],
-button[azul] {
-    background: #00a2ff;
-    --bot: #0090e4;
+/* CORES ESPECÍFICAS */
+[amarelo],
+[amarela] {
+    --cor-cor: #ffcc00;
+    --cor-bor: #ffb300;
 }
 
-button[azul]:active {
-    background: #7cd1ff;
+[azul] {
+    --cor-cor: #006eff;
+    --cor-bor: #1382e4;
 }
 
-/* BRANCO */
-.branco,
-[cor=branco] {
-    background: #fff;
+[verde] {
+    --cor-cor: #07c400;
+    --cor-bor: #06b400;
 }
 
-/* CIANO */
-.ciano,
-[cor=ciano],
-button[ciano] {
-    background: #2deaff;
-    --bot: #28d6e9;
+[vermelho],
+[vermelha] {
+    --cor-cor: #ff1500;
+    --cor-bor: #e60000;
 }
 
-button[ciano]:active {
-    background: #c4f6ff;
+[laranja] {
+    --cor-cor: #ff7900;
+    --cor-bor: #ff6d00;
 }
 
-/* CINZA */
-.cinza,
-[cor=cinza],
-button[cinza],
-button {
-    background: #c0c0c0;
-    --bot: #a5a5a5;
+[roxo],
+[roxa] {
+    --cor-cor: #be29ec;
+    --cor-bor: #9e02e0;
 }
 
-[cor=carta] {
+[rosa] {
+    --cor-cor: #ff59c7;
+    --cor-bor: #e451b3;
+}
+
+[marrom] {
+    --cor-cor: #6f4518;
+    --cor-bor: #8b5e34;
+}
+
+[preto],
+[preta] {
+    --cor-cor: #161718;
+    --cor-bor: #3a3737;
+    background-color: #161718;
+}
+
+[ciano] {
+    --cor-cor: #2deaff;
+    --cor-bor: #28d6e9;
+}
+
+[cinza] {
+    --cor-cor: #c0c0c0;
+    --cor-bor: #a5a5a5;
+}
+
+[corfundodecarta] {
     background: #d1d1d1;
-}
-
-button[cinza]:active,
-button:active {
-    background: #e6e6e6;
-}
-
-/* LARANJA */
-.laranja,
-[cor=laranja],
-button[laranja] {
-    background: #ff9100;
-    --bot: #e07f00;
-}
-
-button[laranja]:active {
-    background: #ffb758;
-}
-
-/* MARROM */
-
-.marrom,
-[cor=marrom],
-button[marrom] {
-    background: #be5a07;
-    --bot: #b65200;
-}
-
-button[marrom]:active {
-    background: #f0a363;
-}
-
-/* PRETO */
-
-.preto,
-[cor=preto],
-button[preto] {
-    background-color: #252525;
-    --bot: #000;
-}
-
-button[preto]:active {
-    background: #8b8b8b;
-}
-
-/* ROSA */
-
-.rosa,
-[cor=rosa],
-button[rosa] {
-    background: #ff59c7;
-    --bot: #e451b3;
-}
-
-button[rosa]:active {
-    background: #ff94db;
-}
-
-/* ROXO */
-.roxo,
-[cor=roxo],
-button[roxo] {
-    background: #be29ec;
-    --bot: rgb(158, 2, 224);
-}
-
-button[roxo]:active {
-    background: #da85ff;
-}
-
-/* VERDE */
-.verde,
-[cor=verde],
-button[verde] {
-    background: #07c400;
-    --bot: #06b400;
-}
-
-button[verde]:active {
-    background: #6ae666;
-}
-
-/* VERMELHO */
-.vermelho,
-[cor=vermelho],
-button[vermelho] {
-    background: #f22613;
-    --bot: #e60000;
-}
-
-button[vermelho]:active {
-    background: #fc8c8c;
-}
-
-[cor=misto] {
-    background: linear-gradient(90deg, rgba(255,217,0,1) 0%, rgba(0,81,255,1) 33%, rgba(7,196,0,1) 66%, rgba(242,38,19,1) 100%);
-}
-
-button[sair] {
-    height: 42px !important;
-    width: 42px !important;
-    border: 1.5px outset var(--bot);
-    background-image: url("../img/util/sair.png");
-	background-size: auto 60%;
-}
-
-button[certa], button[certa]:active {
-    background-image: url("../img/util/certa.png") !important;
-	background-size: auto 100% !important;
-    aspect-ratio: 1 / 1;
-}
-
-button[certa] {
-    background: #07c400; 
-    --bot: #06b400;
-}
-
-button[certa]:active {
-    background: #abffa9; 
-}
-
-button[errada], button[errada]:active {
-    aspect-ratio: 1 / 1;
-    background-image: url("../img/util/errada.png") !important;
-	background-size: auto 90% !important;
-}
-button[errada] {
-    background: #f22613;
-    --bot: #e60000;
-}
-
-button[errada]:active {
-    background: #ffa9a9; 
-}
-
-button[certa]:disabled {
-	cursor: no-drop;
-	background-color: #999999;
-    background-image: url("../img/util/certa.png");
-	background-size: auto 100%;
-    opacity: 0.3;
-}
-
-button[errada]:disabled {
-	cursor: no-drop;
-	background-color: #999999;
-    background-image: url("../img/util/errada.png");
-	background-size: auto 90%;
-    opacity: 0.3;
-}
-
-button[errada] {
-    background: #f22613;
-    --bot: #e60000;
-    background-image: url("../img/util/errada.png");
-	background-size: auto 90%;
-}
-
-button[certa]:active, button[certa], button[certa]:disabled, button[errada]:disabled, button[errada], button[errada]:active, button[sair] {
-    transition: all 0.1s !important;
-    background-repeat: no-repeat;
-    background-position: center;
 }

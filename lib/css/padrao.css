@@ -1,11 +1,15 @@
+/* BETA - 03/06/26 */
+
 /* PADRÃO COM HERANÇAS */
 
 @import "../fonts/fontes.css"; /* FONTES */
 
+@import "cores.css"; /* CORES */
 @import "normal.css"; /* PADRÃO */
 @import "layout.css"; /* LAYOUT */
-@import "cores.css"; /* CORES */
 @import "cartas.css"; /* CARTAS */
 @import "funcoes.css"; /* FUNÇÕES */
 @import "botoes.css"; /* BOTÕES */
 @import "estilos.css"; /* ESTILOS */
+
+@import "index.css"; /* INDEX */

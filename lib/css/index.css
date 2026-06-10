@@ -33,6 +33,7 @@ body {
     max-width: 960px;
     aspect-ratio: 16 / 9;
     border: 1px solid #ffffff40;
+    font-family: Roboto-3, sans-serif;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -109,12 +110,4 @@ body {
 hr {
     width: 100%;
     background: #ffffff;
-}
-
-button {
-    position: relative !important;
-    float: left !important;
-    aspect-ratio: 1/1;
-    margin: 10px;
-    width: 100px;
 }
