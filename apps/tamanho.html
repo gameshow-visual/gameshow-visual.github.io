@@ -23,6 +23,8 @@
     <div id="tamanho-html"></div>
     <hr>
     <div id="orientacao"></div>
+    <hr>
+    <button onclick="entrarFullscreen()">Tela Cheia</button>
 </body>
 
 
@@ -48,4 +50,16 @@
 
     atualizarOrientacao();
     window.addEventListener("resize", atualizarOrientacao);
+
+    function entrarFullscreen() {
+        const elemento = document.documentElement; // HTML inteiro
+
+        if (elemento.requestFullscreen) {
+            elemento.requestFullscreen();
+        } else if (elemento.webkitRequestFullscreen) { // Safari
+            elemento.webkitRequestFullscreen();
+        } else if (elemento.msRequestFullscreen) { // Edge antigo
+            elemento.msRequestFullscreen();
+        }
+    }    
 </script>
