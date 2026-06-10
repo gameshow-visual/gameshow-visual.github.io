@@ -1,7 +1,120 @@
-        button {
-            position: relative !important;
-            float: left !important;
-            aspect-ratio: 1/1;
-            margin: 10px;
-            width: 100px;
-                 }
+/* PADRÃO */
+
+body {
+    margin: 0px;
+    user-select: none;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+[meio] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+[ifundo] {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+[firestick] {
+    position: absolute;
+    color: white;
+    height: 540px;
+    width: 100%;
+    max-width: 960px;
+    aspect-ratio: 16 / 9;
+    border: 1px solid #ffffff40;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+[firestick="retrato"] {
+    position: absolute;
+    height: 960px !important;
+    width: 100% !important;
+    max-width: 540px !important; 
+    aspect-ratio: 9 / 16 !important;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+[pagina] {
+    width: 540px;
+    max-width: 960px;
+    aspect-ratio: 16 / 9;
+    transform: rotate(0deg);
+    box-sizing: border-box;
+    /* border: 10px solid yellow;  */
+    /* background-color: aqua; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+[pagina='paisagem'] {
+    width: 100%;
+    max-width: 960px;
+    aspect-ratio: 16 / 9;
+}
+
+
+
+/* LOGOS */
+
+[fundo] {
+    background-color: #022da5 !important;
+    background-attachment: fixed;
+}
+
+[fundo="logo"] {
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.5)),
+        url("../img/fundo/logo.png");
+}
+
+[fundo="video"] {
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.5)),
+        url("../img/fundo/video.png");
+}
+
+/* MENU LATERAL */
+[botoes] {
+    left: 0px;
+    border: 1px yellow dashed;
+    width: 100px;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    z-index: 9999;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+hr {
+    width: 100%;
+    background: #ffffff;
+}
+
+button {
+    position: relative !important;
+    float: left !important;
+    aspect-ratio: 1/1;
+    margin: 10px;
+    width: 100px;
+}

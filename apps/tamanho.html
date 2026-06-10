@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Tamanho</title>
+    <!-- <link rel="stylesheet" href="../lib/css/padrao.css"> -->
+    <link rel="stylesheet" href="../lib/css/index.css">
+    <link rel="icon" href="../lib/img/logo/favicon.ico" type="image/x-icon">
+    <!-- <script type="text/javascript" src="../lib/javascript/padrao.js"></script> -->
+
+    <style>
+    </style>
+
+</head>
+
+<body>
+    <div id="tamanho-html"></div>
+    <hr>
+    <div id="orientacao"></div>
+</body>
+
+
+<script>
+    function atualizarTamanho() {
+        const largura = document.documentElement.clientWidth;
+        const altura = document.documentElement.clientHeight;
+
+        document.getElementById("tamanho-html").textContent =
+            `HTML: ${largura}px × ${altura}px`;
+    }
+
+    atualizarTamanho();
+    window.addEventListener("resize", atualizarTamanho);
+
+    function atualizarOrientacao() {
+        const texto = window.matchMedia("(orientation: portrait)").matches
+            ? "Portrait (em pé)"
+            : "Landscape (deitado)";
+
+        document.getElementById("orientacao").textContent = texto;
+    }
+
+    atualizarOrientacao();
+    window.addEventListener("resize", atualizarOrientacao);
+</script>
