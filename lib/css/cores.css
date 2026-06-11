@@ -61,7 +61,6 @@
 [preta] {
     --cor-cor: #161718;
     --cor-bor: #3a3737;
-    background-color: #161718;
 }
 
 [ciano] {
@@ -76,4 +75,53 @@
 
 [corfundodecarta] {
     background: #d1d1d1;
+}
+
+/* CORES PARA FUNDO */
+[corfundo][amarelo],
+[corfundo][amarela] {
+    background-color: #ffcc00;
+}
+
+[corfundo][azul] {
+    background-color: #006eff;
+}
+
+[corfundo][verde] {
+    background-color: #07c400;
+}
+
+[corfundo][vermelho],
+[corfundo][vermelha] {
+    background-color: #ff1500;
+}
+
+[corfundo][laranja] {
+    background-color: #ff7900;
+}
+
+[corfundo][roxo],
+[corfundo][roxa] {
+    background-color: #be29ec;
+}
+
+[corfundo][rosa] {
+    background-color: #ff59c7;
+}
+
+[corfundo][marrom] {
+    background-color: #6f4518;
+}
+
+[corfundo][preto],
+[corfundo][preta] {
+    background-color: #161718;
+}
+
+[corfundo][ciano] {
+    background-color: #2deaff;
+}
+
+[corfundo][cinza] {
+    background-color: #c0c0c0;
 }

@@ -111,3 +111,57 @@ hr {
     width: 100%;
     background: #ffffff;
 }
+
+[botoes]>* {
+    margin: 2.5px;
+}
+
+hr {
+    width: 100%;
+    background: #ffffff;
+}
+
+[botaogirar] {
+    width: 50px;
+    height: 50px;
+}
+
+/* CARTÃO AMARELO / VERMELHO */
+
+#cartao {
+    object-fit: cover;
+    object-position: 38% 80%;
+    aspect-ratio: 142 / 245 !important;
+}
+
+#firestick[firestick] #cartao {
+    width: 284px;
+}
+
+#firestick[firestick] [cartao] {
+    transform: rotateX(103.9deg);
+}
+
+#firestick[firestick="retrato"] #cartao {
+    width: 490px;
+}
+
+#firestick[firestick="retrato"] [cartao] {
+    transform: rotateX(113deg);
+}
+
+
+[cartao] {
+    width: fit-content !important;
+    height: fit-content !important;
+    overflow: hidden;
+    position: relative;
+    z-index: 2;
+    transform-origin: bottom center;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+    cursor: pointer;
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+    will-change: transform;
+}
