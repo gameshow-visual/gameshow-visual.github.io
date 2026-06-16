@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="mobile-web-app-capable" content="yes">
@@ -13,11 +14,120 @@
     <title>GameShow & Visual</title>
     <link rel="stylesheet" href="lib/css/padrao.css">
     <link rel="stylesheet" href="lib/css/index.css">
-    <script type="text/javascript" src="lib/js/padrao.js"></script>
+    <script type="text/javascript" src="lib/javascript/padrao.js"></script>
+    <script type="text/javascript" src="lib/javascript/index.js"></script>
+    <link rel="icon" href="lib/img/logo/favicon.ico" type="image/x-icon">
 </head>
+
+<style>
+    @media screen and (width: 960px) and (height: 540px) and (orientation: landscape) {
+        [firestick] {
+            height: 540px;
+            max-width: 960px;
+            aspect-ratio: 16 / 9;
+        }
+    }
+
+    @media screen and (width: 540px) and (height: 960px) and (orientation: portrait) {
+        [firestick] {
+            height: 960px;
+            max-width: 540px;
+            aspect-ratio: 9 / 16;
+        }
+    }
+</style>
+
 <body fundo="logo">
-    <button amarelo onclick="window.location.href = 'jogos/bingo-quimica/'"><img src="jogos/bingo-quimica/lib/tab-per.png"></button>
-    <button>TESTE</button>
+    <div firestick id="firestick">
+        <iframe ifundo id="index" src="central/logo.html" frameBorder="0" scrolling="no"></iframe>
+        <div corfundo></div>
+        <div cartao>
+            <img id="cartao" src="">
+        </div>
+        <div contagem>
+            <img id="contmao">
+        </div>        
+    </div>
 </body>
 
-</html>
+<script src="lib/javascript/protecao.js"></script>
+<script src="lib/javascript/index.js"></script>
+
+<script>
+    async function entbase() {
+        const base = await fetch("central/entrada/base.php");
+        const cmdbase = await base.text();
+
+        if (cmdbase.trim()) {
+            console.log("[BASE] RECEBIDO:", cmdbase);
+            executar(cmdbase);
+        }
+    }
+
+    async function entgeral() {
+        const geral = await fetch("https://institutophala.com.br/sam/central/entrada/geral.php");
+        const cmdgeral = await geral.text();
+
+        if (cmdgeral.trim()) {
+            console.log("[GERAL] RECEBIDO:", cmdgeral);
+            executar(cmdgeral);
+        }
+    }
+
+    async function entmodo() {
+        const modo = await fetch("https://institutophala.com.br/sam/central/entrada/modo.php");
+        const cmdmodo = await modo.text();
+
+        if (cmdmodo.trim()) {
+            console.log("[MODO] RECEBIDO:", cmdmodo);
+            executar(cmdmodo);
+        }
+    }
+
+    function executar(cmd) {
+        if (cmd.startsWith("cartao=")) {
+            const corcartao = cmd.replace("cartao=", "");
+            cartao(corcartao);
+            return;
+        }
+
+        // if (cmd.startsWith("tempo=")) {
+        //     const vtempo = cmd.replace("tempo=", "");
+        //     tempo(vtempo);
+        //     return;
+        // }
+
+
+        // if (cmd.startsWith("click=")) {
+        //     const idclick = cmd.replace("click=", "");
+        //     document.getElementById(idclick).click();
+        //     return;
+        // }
+
+        // if (cmd.startsWith("modo=")) {
+        //     const vmodo = cmd.replace("modo=", "");
+        //     document.getElementById("tamanho").setAttribute("modo", vmodo);
+        //     return;
+        // }
+
+        // if (cmd.startsWith("explosao")) {
+        //     confeites();
+        //     return;
+        // }
+    }
+
+    setInterval(entbase, 300);
+    setInterval(entmodo, 300);
+    setInterval(entgeral, 300);
+
+    function saigeral(comando) {
+        fetch("https://institutophala.com.br/sam/central/saida/geral.php", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: "geral=" + encodeURIComponent(comando)
+        });
+        console.log("[GERAL] ENVIADO:", comando);
+    }
+</script>
