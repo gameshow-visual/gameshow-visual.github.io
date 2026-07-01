@@ -103,7 +103,6 @@ function genius(modo, opcao) {
             }
             setTimeout(() => {
                 document.getElementById('cxiniciar').disabled = false;
-                document.getElementById('cxiniciar').checked = false;
             }, 3500);
 
             seq = []
