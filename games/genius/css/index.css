@@ -1,0 +1,145 @@
+        [simon] {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            border: 3px solid white;
+            height: 500px;
+            width: 500px;
+            border-radius: 240px;
+            --s: 4px;
+            /* control the size*/
+            --c1: #121212;
+            --c2: #2b2b2b;
+
+            background:
+                conic-gradient(at 25% 25%, #0000 75%, var(--c1) 0) 0 calc(3*var(--s)/4),
+                conic-gradient(#0000 75%, var(--c2) 0) calc(var(--s)/-8) calc(5*var(--s)/8),
+                conic-gradient(at 25% 75%, var(--c1) 25%, var(--c2) 0);
+            background-size: var(--s) var(--s);
+        }
+
+        [corsimon] {
+            z-index: 100;
+            position: absolute;
+            border-radius: 6px;
+            border: 3px solid white;
+            width: 235px;
+            height: 235px;
+            cursor: pointer;
+            z-index: 1;
+            /* transition: all 0.15s; */
+            transition: all 0.15s ease;
+        }
+
+        [corsimon="1"] {
+            top: 5px;
+            left: 5px;
+            border-radius: 235px 0px 120px 0px;
+            background: #00386d;
+        }
+
+        [corsimon="2"] {
+            top: 5px;
+            right: 5px;
+            border-radius: 0px 235px 0px 120px;
+            background: #6d0000;
+            /* background: #a51407; */
+        }
+
+        [corsimon="3"] {
+            bottom: 5px;
+            left: 5px;
+            border-radius: 0px 120px 0px 235px;
+            background: #002b00;
+        }
+
+        [corsimon="4"] {
+            bottom: 5px;
+            right: 5px;
+            border-radius: 120px 0px 235px 0px;
+            background: #3f3f00;
+        }
+
+        [corsimon="1"][luz] {
+            z-index: 100;
+            background: radial-gradient(circle,
+                    #b3e5ff 0%,
+                    #00aaff 40%,
+                    #0066ff 100%);
+            filter:
+                drop-shadow(0 0 5px #00aaff) drop-shadow(0 0 10px #00aaff) drop-shadow(0 0 20px #00aaff) drop-shadow(0 0 40px #0066ff);
+        }
+
+        [corsimon="2"][luz] {
+            z-index: 100;
+            background: radial-gradient(circle,
+                    #ffb3b3 0%,
+                    #ff3333 40%,
+                    #ff0000 100%);
+            filter:
+                drop-shadow(0 0 5px #ff0000) drop-shadow(0 0 10px #ff0000) drop-shadow(0 0 20px #ff0000) drop-shadow(0 0 40px #ff3333);
+        }
+
+        [corsimon="3"][luz] {
+            z-index: 100;
+            background: radial-gradient(circle,
+                    #b3ffb3 0%,
+                    #00ff00 40%,
+                    #00cc00 100%);
+            filter:
+                drop-shadow(0 0 5px #00ff00) drop-shadow(0 0 10px #00ff00) drop-shadow(0 0 20px #00ff00) drop-shadow(0 0 40px #00e400);
+        }
+
+        [corsimon="4"][luz] {
+            z-index: 100;
+            background: radial-gradient(circle,
+                    #fff9b3 0%,
+                    #ffff00 40%,
+                    #ffcc00 100%);
+
+            filter:
+                drop-shadow(0 0 5px #ffff00) drop-shadow(0 0 10px #ffff00) drop-shadow(0 0 20px #ffff00) drop-shadow(0 0 40px #ffcc00);
+        }
+
+        #acertou {
+            height: 96px;
+            filter: drop-shadow(3px 3px 3px rgba(0, 0, 0, 0.5));
+            transition: all 0.5s;
+            transform: scale(0);
+            z-index: 10;
+        }
+
+        #pontos {
+            font-size: 80px;
+            /* font-weight: bold; */
+            color: white;
+            transition: all .35s ease;
+            font-family: Display;
+        }
+
+        #pontos.ganhou {
+            animation: ganhouPonto .45s ease;
+        }
+
+        @keyframes ganhouPonto {
+
+            0% {
+                transform: scale(1);
+                text-shadow: none;
+            }
+
+            40% {
+                transform: scale(1.8);
+                text-shadow:
+                    0 0 8px #fff,
+                    0 0 18px #ffff00,
+                    0 0 35px #ffff00,
+                    0 0 60px #ffcc00;
+            }
+
+            100% {
+                transform: scale(1);
+                text-shadow: none;
+            }
+        }
