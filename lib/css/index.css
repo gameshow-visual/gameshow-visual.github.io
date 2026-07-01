@@ -10,6 +10,7 @@ body {
     justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
+    perspective: 1200px;
 }
 
 [meio] {
@@ -25,55 +26,6 @@ body {
     z-index: 1;
 }
 
-[firestick] {
-    position: absolute;
-    color: white;
-    height: 540px;
-    width: 100%;
-    max-width: 960px;
-    aspect-ratio: 16 / 9;
-    border: 1px solid #ffffff40;
-    font-family: Roboto-3, sans-serif;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-[firestick="retrato"] {
-    position: absolute;
-    height: 960px !important;
-    width: 100% !important;
-    max-width: 540px !important; 
-    aspect-ratio: 9 / 16 !important;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-
-[pagina] {
-    width: 540px;
-    max-width: 960px;
-    aspect-ratio: 16 / 9;
-    transform: rotate(0deg);
-    box-sizing: border-box;
-    /* border: 10px solid yellow;  */
-    /* background-color: aqua; */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-
-[pagina='paisagem'] {
-    width: 100%;
-    max-width: 960px;
-    aspect-ratio: 16 / 9;
-}
-
-
-
 /* LOGOS */
 
 [fundo] {
@@ -85,83 +37,4 @@ body {
     background-image:
         linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.5)),
         url("../img/fundo/logo.png");
-}
-
-[fundo="video"] {
-    background-image:
-        linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.5)),
-        url("../img/fundo/video.png");
-}
-
-/* MENU LATERAL */
-[botoes] {
-    left: 0px;
-    border: 1px yellow dashed;
-    width: 100px;
-    height: 100%;
-    position: absolute;
-    top: 0px;
-    z-index: 9999;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-}
-
-hr {
-    width: 100%;
-    background: #ffffff;
-}
-
-[botoes]>* {
-    margin: 2.5px;
-}
-
-hr {
-    width: 100%;
-    background: #ffffff;
-}
-
-[botaogirar] {
-    width: 50px;
-    height: 50px;
-}
-
-/* CARTÃO AMARELO / VERMELHO */
-
-#cartao {
-    object-fit: cover;
-    object-position: 38% 80%;
-    aspect-ratio: 142 / 245 !important;
-}
-
-#firestick[firestick] #cartao {
-    width: 284px;
-}
-
-#firestick[firestick] [cartao] {
-    transform: rotateX(103.9deg);
-}
-
-#firestick[firestick="retrato"] #cartao {
-    width: 490px;
-}
-
-#firestick[firestick="retrato"] [cartao] {
-    transform: rotateX(113deg);
-}
-
-
-[cartao] {
-    width: fit-content !important;
-    height: fit-content !important;
-    overflow: hidden;
-    position: relative;
-    z-index: 2;
-    transform-origin: bottom center;
-    transition: transform 0.4s ease, opacity 0.4s ease;
-    cursor: pointer;
-    display: none;
-    opacity: 0;
-    visibility: hidden;
-    will-change: transform;
 }
