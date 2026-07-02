@@ -94,7 +94,8 @@ function baguncado(modo, opcao, valor) {
         imagens = [1, 2, 3, 4, 5, 6, 7, 8];
         ncola = [1, 2, 3, 4, 5, 6, 7, 8];
         acertos = 0;
-        pasta = Math.floor(Math.random() * 59) + 1;
+        // pasta = Math.floor(Math.random() * 59) + 1;
+        pasta = Math.floor(Math.random() * 1) + 1;
         mem = [];
         misturar(img);
         for (let i = 0; i <= 7; i++) {

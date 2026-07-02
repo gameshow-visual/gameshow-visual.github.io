@@ -1,0 +1,120 @@
+/* COR DO FUNDO */
+[corfundo] {
+    position: absolute;
+    display: none;
+    z-index: 1;
+    opacity: 0;
+    visibility: hidden;
+    transition: visibility .5s, opacity .5s, transform .5s, background-color .5s ease;
+    width: 100vw;
+    height: 100vh;
+}
+
+/* TEMPO HORIZONTAL E VERTICAL */
+
+[btempo],
+[bvtempo] {
+    z-index: 11;
+    position: absolute;
+    overflow: hidden;
+    transition: all .25s;
+    transform: scale(0);
+    border-radius: 5px;
+    border: 4px solid white;
+    background-image: repeating-linear-gradient(45deg, #000000 0, #000000 1px, transparent 0, transparent 50%);
+    background-size: 10px 10px;
+    background-color: #282828;
+    filter: drop-shadow(0px 0px 2px rgba(0, 0, 0, 1));
+    box-sizing: border-box;
+}
+
+[btempo]::before,
+[btempo]::after,
+[bvtempo]::before,
+[bvtempo]::after {
+    content: '';
+    position: absolute;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 99px;
+    z-index: 1;
+}
+
+
+[btempo]::before,
+[btempo]::after {
+    height: 30%;
+    top: 15%;
+}
+
+[bvtempo]::before,
+[bvtempo]::after {
+    height: 24%;
+    width: 15%;
+    top: 1%;
+}
+
+[btempo]::before {
+    width: 20%;
+    right: 12%;
+}
+
+[btempo]::after {
+    width: 5%;
+    right: 3%;
+}
+
+[bvtempo]::before {
+    height: 12%;
+    right: 10%;
+}
+
+[bvtempo]::after {
+    width: 14%;
+    right: 10%;
+    top: 15%
+}
+
+[btempo]>[btbarra],
+[bvtempo]>[bvtbarra] {
+    overflow: hidden;
+    height: 100%;
+    background: #dc0000;
+    border-radius: 1px;
+}
+
+[btempo]>[btbarra] {
+    animation: btemprest calc(var(--tempo) * 1s) linear forwards;
+    transform-origin: center left;
+}
+
+[bvtempo]>[bvtbarra] {
+    animation: bvtemprest calc(var(--tempo) * 1s) linear forwards;
+    transform-origin: center bottom;
+}
+
+@keyframes btemprest {
+    to {
+        transform: scaleX(0);
+    }
+}
+
+@keyframes bvtemprest {
+    to {
+        transform: scaleY(0);
+    }
+}
+
+[btempcont],
+[bvtempcont] {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-family: Display;
+    font-size: 30pt;
+    z-index: 1;
+    filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 1));
+}

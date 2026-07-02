@@ -1,0 +1,145 @@
+/* BETA - 03/06/26 */
+
+/* COR PADRÃO */
+@property --cor-cor {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #9e9e9e;
+}
+
+@property --cor-bor {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #858585;
+}
+
+/* CORES ESPECÍFICAS */
+[amarelo],
+[amarela] {
+    --cor-cor: #ffcc00;
+    --cor-bor: #ffb300;
+}
+
+[azul] {
+    --cor-cor: #006eff;
+    --cor-bor: #1382e4;
+}
+
+[verde] {
+    --cor-cor: #07c400;
+    --cor-bor: #06b400;
+}
+
+[vermelho],
+[vermelha] {
+    --cor-cor: #ff1500;
+    --cor-bor: #e60000;
+}
+
+[laranja] {
+    --cor-cor: #ff7900;
+    --cor-bor: #ff6d00;
+}
+
+[roxo],
+[roxa] {
+    --cor-cor: #be29ec;
+    --cor-bor: #9e02e0;
+}
+
+[rosa] {
+    --cor-cor: #ff59c7;
+    --cor-bor: #e451b3;
+}
+
+[marrom] {
+    --cor-cor: #6f4518;
+    --cor-bor: #8b5e34;
+}
+
+[preto],
+[preta] {
+    --cor-cor: #161718;
+    --cor-bor: #3a3737;
+}
+
+[ciano] {
+    --cor-cor: #2deaff;
+    --cor-bor: #28d6e9;
+}
+
+[cinza] {
+    --cor-cor: #c0c0c0;
+    --cor-bor: #a5a5a5;
+}
+
+[cordecarta] {
+    background-color: #d1d1d1;
+}
+
+[azul],
+[amarelo],
+[amarela],
+[verde],
+[vermelho],
+[vermelha],
+[laranja],
+[roxa],
+[roxo],
+[rosa],
+[marrom],
+[preto],
+[preta],
+[ciano],
+[cinza] {
+    background-color: var(--cor-bor);
+}
+
+/* CORES PARA FUNDO */
+[corfundo][amarelo],
+[corfundo][amarela] {
+    background-color: #ffcc00;
+}
+
+[corfundo][azul] {
+    background-color: #006eff;
+}
+
+[corfundo][verde] {
+    background-color: #07c400;
+}
+
+[corfundo][vermelho],
+[corfundo][vermelha] {
+    background-color: #ff1500;
+}
+
+[corfundo][laranja] {
+    background-color: #ff7900;
+}
+
+[corfundo][roxo],
+[corfundo][roxa] {
+    background-color: #be29ec;
+}
+
+[corfundo][rosa] {
+    background-color: #ff59c7;
+}
+
+[corfundo][marrom] {
+    background-color: #6f4518;
+}
+
+[corfundo][preto],
+[corfundo][preta] {
+    background-color: #161718;
+}
+
+[corfundo][ciano] {
+    background-color: #2deaff;
+}
+
+[corfundo][cinza] {
+    background-color: #c0c0c0;
+}

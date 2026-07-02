@@ -1,0 +1,120 @@
+/* BETA - 03/06/26 */
+
+/* BOTÃO PADRÃO */
+button {
+    position: relative;
+    background: var(--cor-cor) !important;
+    border: 3px outset var(--cor-bor) !important;
+    border-radius: 5px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff !important;
+    text-shadow: 1px 1px 1px black;
+    text-transform: uppercase;
+    font-family: 'Chau';
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.05s;
+}
+
+button>img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    aspect-ratio: 1 / 1;
+    /* filter: drop-shadow(3px 3px 3px rgba(0, 0, 0, 0.5)); */
+}
+
+button:active {
+    filter: brightness(0.9) !important;
+}
+
+button:disabled {
+    cursor: no-drop !important;
+    /* background-color: #999999 !important; */
+    /* color: #cecece !important; */
+    /* border: 3px outset #cecece !important; */
+    filter: brightness(0.7) !important;
+}
+
+button>img[sombra] {
+    filter: drop-shadow(3px 3px 3px rgba(0, 0, 0, 0.5));
+}
+
+button:disabled>img,
+button:disabled>img[sombra] {
+    opacity: 0.3;
+}
+
+button[bola] {
+    border-radius: 50%;
+}
+
+/* BOTÃO SAIR */
+
+button[sair] {
+    height: 42px !important;
+    width: 42px !important;
+    border: 1.5px outset var(--cor-bor);
+    background-image: url("../img/util/sair.png") !important;
+    background-size: auto 80% !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+}
+
+/* BOTÕES CERTA E ERRADA */
+
+button[certa],
+button[certa]:active {
+    background-image: url("../img/util/certa.png") !important;
+    background-size: auto 90% !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    aspect-ratio: 1 / 1;
+}
+
+button[certa] {
+    --cor-cor: #07c400;
+    --cor-bor: #06b400;
+}
+
+button[errada],
+button[errada]:active {
+    aspect-ratio: 1 / 1;
+    background-image: url("../img/util/errada.png") !important;
+    background-size: auto 90% !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    aspect-ratio: 1 / 1;
+}
+
+button[errada] {
+    --cor-cor: #f22613;
+    --cor-bor: #e60000;
+}
+
+/* BOTÃO COM IMAGEM E TEXTO */
+
+button>img[figura],
+button>div[texto] {
+    position: absolute;
+    height: 100%;
+}
+
+button>img[figura] {
+    left: 0px;
+    filter: drop-shadow(3px 3px 3px rgba(0, 0, 0, 0.5));
+    width: 40%;
+    box-sizing: border-box;
+}
+
+button>div[texto] {
+    right: 0px;
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
