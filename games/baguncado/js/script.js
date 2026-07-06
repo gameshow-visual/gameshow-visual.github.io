@@ -1,5 +1,3 @@
-
-
 let max = 0;
 let img = [];
 let pasta = [];
@@ -95,7 +93,7 @@ function baguncado(modo, opcao, valor) {
         ncola = [1, 2, 3, 4, 5, 6, 7, 8];
         acertos = 0;
         // pasta = Math.floor(Math.random() * 59) + 1;
-        pasta = Math.floor(Math.random() * 1) + 1;
+        pasta = Math.floor(Math.random() * 2) + 1;
         mem = [];
         misturar(img);
         for (let i = 0; i <= 7; i++) {
