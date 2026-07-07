@@ -11,19 +11,41 @@
     <script type="text/javascript" src="js/script.js"></script>
 </head>
 
+<style>
+    :root {
+        --confalt: 100px;
+        --conflar: 340px;
+    }
+
+    [barra-conf] {
+        top: -65px;
+    }
+</style>
+
 <body onload="iniciar();">
+    <div barra-conf id="bar-conf">
+        <div barra-seta onclick="config()"></div>
+        <div barra-conteudo>
+            <button id="botacao" verde onclick="baguncado('iniciar');config();"
+                style="height: 50px; position: absolute; bottom: 5px; right: 5px;">iniciar</button>
+            <select id="modo" onchange="baguncado('config', 'galeria', value)"
+                style="height: 50px; width: 200px; position: absolute; bottom: 5px; left: 5px;">
+                <option selected disabled>Categoria</option>
+                <option value="normal">Normal</option>
+                <option value="esporte">LSU - Esportes</option>
+                <option value="lugar">LSU - Lugares</option>
+                <option value="rotina">LSU - Rotina</option>
+                <option value="roupa">LSU - Roupas</option>
+                <option value="trabalho">LSU - Trabalhos</option>
+            </select>
+
+
+        </div>
+    </div>
+
+
     <div botoes>
-        <select id="modo" onchange="baguncado('config', 'galeria', value)"
-            style="height: 50px; width: 130px; position: absolute;">
-            <option selected disabled>Categoria</option>
-            <option value="normal">Normal</option>
-            <option value="esporte">LSU - Esportes</option>
-            <option value="lugar">LSU - Lugares</option>
-            <option value="rotina">LSU - Rotina</option>
-            <option value="roupa">LSU - Roupas</option>
-            <option value="trabalho">LSU - Trabalhos</option>
-        </select>
-        <button id="botacao" verde onclick="baguncado('iniciar');">iniciar</button>
+
     </div>
     <div nabase>
         <div id="protimg"></div>
@@ -182,3 +204,16 @@
         </div>
     </div>
 </body>
+
+<script>
+    function config() {
+        const div = document.getElementById('bar-conf').style;
+        if (div.top == '0px') {
+            div.top = '-65px';
+            div.opacity = "0.5";
+        } else {
+            div.top = '0px';
+            div.opacity = "1";
+        }
+    }
+</script>

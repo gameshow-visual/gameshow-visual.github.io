@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../lib/css/padrao.css">
+    <link rel="stylesheet" href="css/index.css">
+    <script type="text/javascript" src="../../lib/javascript/padrao.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+    <!-- <script type="text/javascript" src="js/central/base.js"></script> -->
+    <script type="text/javascript" src="../../lib/javascript/protecao.js"></script>
+    <script type="text/javascript" src="../../lib/efeitos/tsparticles.confetti.bundle.min.js"></script>
+    <script type="text/javascript" src="../../lib/efeitos/aplicar.js"></script>
+</head>
+
+<style>
+    :root {
+        --confalt: 100px;
+        --conflar: 400px;
+    }
+
+    [barra-conf] {
+        top: -65px;
+        /* opacity: 1; */
+    }
+</style>
+
+<body fundo="logo" onload="senhas('organizar')">
+    <div barra-conf id="bar-conf">
+        <div barra-seta onclick="config()"></div>
+        <div barra-conteudo>
+            <button id="botcontrole" style="height: 50px; bottom: 5px; position: absolute;" verde
+                onclick="senhas('reiniciar')">reiniciar</button>
+
+            <select id="modo" onchange="senhas('config', 'cores', this.value)"
+                style="height: 50px; width: 130px; position: absolute; bottom: 5px; right: 5px;">
+                <option selected disabled>N° CORES</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+
+            <div bcbox style="width: 120px; height: 48px; border: 1px solid black; position: absolute; bottom: 3px; left: 3px;">
+                <input id="checkrep" onclick="senhas('config', 'repetir')" type="checkbox"
+                    style="border: 1px solid black;" checked>
+                <div style="color: black;">repetido</div>
+            </div>
+
+        </div>
+    </div>
+    <div corpo>
+        <div id="protecao"></div>
+        <div base>
+            <div cores>
+
+                <!-- <div linha>
+                    <div fila>2</div>
+                    <div cartas>
+                        <div scor relevo id="scor1" azul></div>
+                        <div scor relevo id="scor1" azul></div>
+                        <div scor relevo id="scor1" azul></div>
+                        <div scor relevo id="scor1" azul></div>
+                    </div>
+                    <div pinos>
+                        <div id="p1" pino preto></div>
+                        <div id="p2" pino branco></div>
+                        <div id="p3" pino branco></div>
+                        <div id="p4" pino preto></div>
+                        <div id="checar" relevo onclick="senhas('checar','iniciar')"><img
+                                src="../../lib/img/util/scanner.png"></div>
+                    </div>
+                </div> -->
+                
+            </div>
+        </div>
+        <div resposta>
+            <div pcarta id="m1">
+                <div carta id="c1">
+                    <div frente preto>
+                        <div fundo></div>
+                        <img src="../../lib/img/util/cadeado.png">
+                    </div>
+                    <div atras id="carta1">
+                        <div relevo></div>
+                    </div>
+                </div>
+            </div>
+            <div pcarta id="m2">
+                <div carta id="c2">
+                    <div frente preto>
+                        <div fundo></div>
+                        <img src="../../lib/img/util/cadeado.png">
+                    </div>
+                    <div atras id="carta2">
+                        <div relevo></div>
+                    </div>
+                </div>
+            </div>
+            <div pcarta id="m3">
+                <div carta id="c3">
+                    <div frente preto>
+                        <div fundo></div>
+                        <img src="../../lib/img/util/cadeado.png">
+                    </div>
+                    <div atras id="carta3">
+                        <div relevo></div>
+                    </div>
+                </div>
+            </div>
+            <div pcarta id="m4">
+                <div carta id="c4">
+                    <div frente preto>
+                        <div fundo></div>
+                        <img src="../../lib/img/util/cadeado.png">
+
+                    </div>
+                    <div atras id="carta4">
+                        <div relevo></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div selecao>
+            <div id="cor1" relevo="selecionar" onclick="senhas('selecionar','cor', 1)">1</div>
+            <div id="cor2" relevo="selecionar" onclick="senhas('selecionar','cor', 2)">2</div>
+            <div id="cor3" relevo="selecionar" onclick="senhas('selecionar','cor', 3)">3</div>
+            <div id="cor4" relevo="selecionar" onclick="senhas('selecionar','cor', 4)">4</div>
+            <div id="cor5" relevo="selecionar" onclick="senhas('selecionar','cor', 5)">5</div>
+            <div id="cor6" relevo="selecionar" onclick="senhas('selecionar','cor', 6)">6</div>
+            <div id="cor7" relevo="selecionar" onclick="senhas('selecionar','cor', 7)">7</div>
+            <div id="cor8" relevo="selecionar" onclick="senhas('selecionar','cor', 8)">8</div>
+            <div id="cor9" relevo="selecionar" onclick="senhas('selecionar','cor', 9)">9</div>
+            <div id="cor10" relevo="selecionar" onclick="senhas('selecionar','cor', 10)">10</div>
+        </div>
+    </div>
+</body>
+
+<script>
+    function config() {
+        const div = document.getElementById('bar-conf').style;
+        if (div.top == '0px') {
+            div.top = '-65px';
+            div.opacity = "0.5";
+        } else {
+            div.top = '0px';
+            div.opacity = "1";
+        }
+    }
+</script>
