@@ -73,6 +73,11 @@
     --cor-bor: #a5a5a5;
 }
 
+[branco] {
+    --cor-cor: #b1b1b1;
+    --cor-bor: #bebebe;
+}
+
 [cordecarta] {
     background-color: #d1d1d1;
 }
@@ -91,8 +96,10 @@
 [preto],
 [preta],
 [ciano],
-[cinza] {
-    background-color: var(--cor-bor);
+[cinza],
+[branco],
+[branca] {
+    background-color: var(--cor-cor);
 }
 
 /* CORES PARA FUNDO */
