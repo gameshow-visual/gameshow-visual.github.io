@@ -94,7 +94,7 @@ function senhas(modo, opcao, valor) {
         const div = document.createElement("div");
 
         if (contador > LIMITE_TOTAL) {
-            alert("Limite de 12 itens atingido!");
+            senhas('acabou');
             return;
         }
 
@@ -281,7 +281,6 @@ function senhas(modo, opcao, valor) {
         case 'reiniciar':
             document.querySelector("[cores]").innerHTML = "";
             contador = 1;
-            // senhas('adicionar');
 
             seq = [];
             sel = [];
@@ -335,34 +334,22 @@ function senhas(modo, opcao, valor) {
                 }, 50 * i);
             }
             break;
-        case 'config':
-            switch (opcao) {
-                case 'repetir':
-                    if (repetir) {
-                        repetir = !repetir;
-                        senhas('reiniciar');
-                    } else {
-                        repetir = !repetir;
-                        senhas('reiniciar');
-                    }
-                    break;
-                case 'cores':
-                    max = valor;
-                    for (let c = 1; c <= 10; c++) {
-                        document.getElementById('cor' + c).style.display = "none";
-                    }
-                    for (let a = 1; a <= max; a++) {
-                        document.getElementById('cor' + a).style.display = "flex";
-                    }
-                    senhas('reiniciar');
-                    break;
-            }
-            break;
         case 'acertou':
             document.getElementById('imgchecar').src = "../../lib/img/util/reload.png"
             document.getElementById('checar').onclick = function () { senhas('reiniciar'); };
             senhas('cartas');
+            resposta('certa');
+            setTimeout(() => {
+                resposta('certa');
+            }, 1000);
             confeites(1);
+            break;
+        case 'acabou':
+            // alert('BORA! RENOVAR!!!!');
+            resposta('errada');
+            setTimeout(() => {
+                resposta('errada');
+            }, 2000);
             break;
         case 'selecionar':
             switch (opcao) {
@@ -374,6 +361,12 @@ function senhas(modo, opcao, valor) {
                             v1carta.transform = "rotateY(0deg)"
                         }, 500)
                         vFinal[valor - 1] = false;
+                        const elm4 = document.querySelector("#ac" + valor);
+                        [...elm4.attributes].forEach(attr => {
+                            if (attr.name !== "id" && attr.name !== "atras") {
+                                elm4.removeAttribute(attr.name);
+                            }
+                        });
                         senhas('checar', 'desativar');
                     } else {
                         for (let i = 1; i <= 4; i++) {
@@ -405,76 +398,5 @@ function senhas(modo, opcao, valor) {
                     break;
             }
             break;
-    }
-}
-
-function adicionar() {
-
-    if (contador > LIMITE_TOTAL) {
-        alert("Limite de 12 itens atingido!");
-        return;
-    }
-
-    const container = document.querySelector("[cores]");
-
-    const div = document.createElement("div");
-    div.setAttribute("linha", "");
-    div.innerHTML = `<div fila>${contador++}</div>
-                    <div cartas>
-                        <div pcarta>
-                            <div carta id="lc1" onclick="senhas('selecionar','carta', 1)">
-                                <div id="fc1" frente="selecionar" preto>
-                                    <div fundo></div>
-                                    A
-                                </div>
-                                <div atras relevo id="ac1">
-                                    <div id="fintxt1">A</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div pcarta>
-                            <div carta id="lc2" onclick="senhas('selecionar','carta', 2)">
-                                <div id="fc2" frente="selecionar" preto>
-                                    <div fundo></div>
-                                    B
-                                </div>
-                                <div atras relevo id="ac2">
-                                    <div id="fintxt2">B</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div pcarta>
-                            <div carta id="lc3" onclick="senhas('selecionar','carta', 3)">
-                                <div id="fc3" frente="selecionar" preto>
-                                    <div fundo></div>
-                                    C
-                                </div>
-                                <div atras relevo id="ac3">
-                                    <div id="fintxt3">C</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div pcarta>
-                            <div carta id="lc4" onclick="senhas('selecionar','carta', 4)">
-                                <div id="fc4" frente="selecionar" preto>
-                                    <div fundo></div>
-                                    D
-                                </div>
-                                <div atras relevo id="ac4">
-                                    <div id="fintxt4">D</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div pinos>
-                        <div id="checar" relevo onclick="senhas('checar','iniciar')"><img
-                                id="imgchecar" src="../../lib/img/util/scanner.png"></div>
-                    </div>`
-    // Coloca no topo
-    container.prepend(div);
-
-    // Mantém apenas 6 divs visíveis
-    if (container.childElementCount > LIMITE_VISIVEL) {
-        container.lastElementChild.remove();
     }
 }

@@ -2,16 +2,14 @@
 [corfundo] {
     position: absolute;
     display: none;
-    z-index: 1;
+    z-index: 2;
     opacity: 0;
-    visibility: hidden;
-    transition: visibility .5s, opacity .5s, transform .5s, background-color .5s ease;
+    transition: opacity .3s, transform .3s, background-color .3s ease-in-out;
     width: 100vw;
     height: 100vh;
 }
 
 /* TEMPO HORIZONTAL E VERTICAL */
-
 [btempo],
 [bvtempo] {
     z-index: 11;
@@ -117,4 +115,82 @@
     font-size: 30pt;
     z-index: 1;
     filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 1));
+}
+
+/* RESPOSTA CERTA OU ERRADA */
+[finalresposta] {
+    aspect-ratio: 1/1 !important;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+[finalresposta=certa] {
+    width: 228px;
+    height: 125px;
+    filter: drop-shadow(0 0 10px lime) drop-shadow(0 0 20px lime);
+}
+
+[finalresposta=errada] {
+    width: 200px;
+    height: 200px;
+    filter: drop-shadow(0 0 10px rgb(255, 0, 0)) drop-shadow(0 0 20px rgb(255, 0, 0));
+}
+
+#certa1,
+#certa2,
+#errada1,
+#errada2 {
+    transition: transform 0.15s linear;
+    position: absolute;
+    width: 0px;
+    height: 25px;
+    transform-origin: left;
+}
+
+[finalresposta=errada]>#errada1,
+[finalresposta=errada]>#errada2 {
+    background-color: rgb(255, 47, 47);
+}
+
+[finalresposta=errada]>#errada1 {
+    width: 250px;
+    transform: rotate(45deg) translate(-37px, -89px) scaleX(0);
+}
+
+[finalresposta=errada]>#errada2 {
+    width: 250px;
+    transform: rotate(135deg) translate(-210px, -89px) scaleX(0);
+}
+
+[finalresposta=errada]>#errada1.ativar {
+    transform: rotate(45deg) translate(-37px, -89px) scaleX(1);
+}
+
+[finalresposta=errada]>#errada2.ativar {
+    transform: rotate(135deg) translate(-210px, -89px) scaleX(1);
+}
+
+[finalresposta=certa]>#certa1,
+[finalresposta=certa]>#certa2 {
+    background-color: greenyellow;
+}
+
+[finalresposta=certa]>#certa1 {
+    width: 82px;
+    transform: rotate(60deg) translate(-63.9px, 33.5px) scaleX(0);
+}
+
+[finalresposta=certa]>#certa2 {
+    width: 200px;
+    transform: rotate(-30deg) translate(5.1px, 59px) scaleX(0);
+}
+
+[finalresposta=certa]>#certa1.ativar {
+    transform: rotate(60deg) translate(-63.9px, 33.5px) scaleX(1);
+}
+
+[finalresposta=certa]>#certa2.ativar {
+    transform: rotate(-30deg) translate(5.1px, 59px) scaleX(1);
 }
