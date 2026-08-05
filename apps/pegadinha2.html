@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Tamanho</title>
+    <!-- <link rel="stylesheet" href="../lib/css/padrao.css"> -->
+    <link rel="stylesheet" href="../lib/css/index.css">
+    <link rel="stylesheet" href="../lib/fonts/fontes.css">
+    <link rel="icon" href="../lib/img/logo/favicon.ico" type="image/x-icon">
+    <!-- <script type="text/javascript" src="../lib/javascript/padrao.js"></script> -->
+</head>
+
+<style>
+    body {
+        cursor: none;
+        /* Esconde o cursor original */
+        overflow: hidden;
+    }
+
+    #cursorGigante {
+        position: fixed;
+        width: 32px;
+        height: 32px;
+        pointer-events: none;
+        z-index: 999999;
+        transform-origin: center;
+        transition: transform 3s ease-in-out;
+    }
+
+    #teste {
+        position: fixed;
+        width: 128px;
+        height: 128px;
+        pointer-events: none;
+        z-index: 999999;
+        transform-origin: center;
+        transition: transform 0.8s ease-in-out;
+    }
+</style>
+
+<body fundo="logo">
+    <?xml version="1.0" encoding="utf-8"?>
+    <svg id="cursorGigante" width="32px" height="32px" viewBox="0 0 1.92 1.92" version="1" xmlns="http://www.w3.org/2000/svg"
+        enable-background="new 0 0 48 48">
+        <path fill="#ffffff"
+            d="M1.112 1.588c-0.004 0 -0.008 0 -0.016 -0.004s-0.016 -0.012 -0.024 -0.02l-0.148 -0.344 -0.18 0.168q-0.006 0.012 -0.024 0.012c-0.004 0 -0.012 0 -0.016 -0.004 -0.012 -0.004 -0.024 -0.02 -0.024 -0.036V0.48c0 -0.016 0.008 -0.032 0.024 -0.036 0.004 -0.004 0.012 -0.004 0.016 -0.004 0.008 0 0.02 0.004 0.028 0.012l0.64 0.6c0.012 0.012 0.016 0.028 0.012 0.044s-0.02 0.024 -0.036 0.028l-0.252 0.024 0.156 0.34c0.004 0.008 0.004 0.02 0 0.032 -0.004 0.008 -0.012 0.02 -0.02 0.024l-0.116 0.052c-0.008 -0.008 -0.016 -0.008 -0.02 -0.008" />
+        <path fill="#000000"
+            d="m0.72 0.48 0.64 0.6 -0.308 0.028 0.18 0.392 -0.116 0.052 -0.172 -0.396L0.72 1.36zm0 -0.08c-0.012 0 -0.02 0.004 -0.032 0.008 -0.028 0.012 -0.048 0.04 -0.048 0.072v0.88c0 0.032 0.02 0.06 0.048 0.072 0.012 0.008 0.024 0.008 0.032 0.008 0.02 0 0.04 -0.008 0.056 -0.02l0.136 -0.128 0.124 0.292c0.008 0.02 0.024 0.036 0.044 0.044 0.008 0.004 0.02 0.004 0.028 0.004 0.012 0 0.02 -0.004 0.032 -0.008l0.116 -0.052c0.02 -0.008 0.036 -0.024 0.044 -0.044s0.008 -0.044 0 -0.06l-0.132 -0.288 0.196 -0.016c0.032 -0.004 0.06 -0.024 0.068 -0.052 0.012 -0.028 0.004 -0.064 -0.02 -0.084l-0.64 -0.6c-0.012 -0.02 -0.032 -0.028 -0.052 -0.028" />
+    </svg>
+</body>
+
+
+<script>
+    let inicio = 0;
+    const cursor = document.getElementById("cursorGigante");
+
+    document.addEventListener("mousemove", (e) => {
+        cursor.style.left = e.clientX + "px";
+        cursor.style.top = e.clientY + "px";
+    });
+
+    function mudarRotacao() {
+        let aleatorio = Math.floor(Math.random() * 21) - 10;
+        inicio = inicio + aleatorio;
+        document.getElementById("cursorGigante").style.transform = `rotate(${inicio}deg)`;
+    }
+
+    setInterval(mudarRotacao, 3000);
+
+</script>

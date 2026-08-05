@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Tamanho</title>
+    <!-- <link rel="stylesheet" href="../lib/css/padrao.css"> -->
+    <link rel="stylesheet" href="../lib/css/index.css">
+    <link rel="stylesheet" href="../lib/fonts/fontes.css">
+    <link rel="icon" href="../lib/img/logo/favicon.ico" type="image/x-icon">
+    <!-- <script type="text/javascript" src="../lib/javascript/padrao.js"></script> -->
+</head>
+
+<style>
+    body {
+        cursor: none;
+        /* Esconde o cursor original */
+        overflow: hidden;
+    }
+
+    #cursorGigante {
+        position: fixed;
+        width: 32px;
+        height: 32px;
+        pointer-events: none;
+        z-index: 999999;
+        transform-origin: center;
+    }
+</style>
+
+<body fundo="logo">
+    <img id="cursorGigante" src="../lib/img/util/mouse.png">
+</body>
+
+
+<script>
+    // const cursor = document.getElementById("cursorGigante");
+
+    // let x = 0;
+    // let y = 0;
+    // let mx = 0;
+    // let my = 0;
+
+    // let rotacao = 0;
+
+    // document.addEventListener("mousemove", (e) => {
+    //     mx = e.clientX;
+    //     my = e.clientY;
+    // });
+
+    // function animar() {
+    //     x += (mx - x) * 0.08;
+    //     y += (my - y) * 0.08;
+
+    //     cursor.style.left = x + "px";
+    //     cursor.style.top = y + "px";
+
+    //     rotacao += Math.random() * 20 - 10;
+
+    //     cursor.style.transform =`rotate(${rotacao}deg)`;
+
+    //     requestAnimationFrame(animar);
+    // }
+
+    // animar();
+
+    // 
+
+    const cursor = document.getElementById("cursorGigante");
+
+    let x = 0;
+    let y = 0;
+    let mx = 0;
+    let my = 0;
+
+    let rotacao = 0;
+    let alvoRotacao = 0;
+
+
+    document.addEventListener("mousemove", (e) => {
+
+        cursor.style.left = e.clientX + "px";
+        cursor.style.top = e.clientY + "px";
+
+        // mx = e.clientX;
+        // my = e.clientY;
+    });
+
+
+
+    setInterval(() => {
+
+        // alvoRotacao = Math.random() * 120 - 60;
+        alvoRotacao = Math.random() * 360 - 180;
+
+    }, 100);
+
+    document.addEventListener("keydown", function (e) {
+
+        // F12
+        if (e.key === "F12") {
+            e.preventDefault();
+        }
+
+        // Ctrl + Shift + I (DevTools)
+        if (e.ctrlKey && e.shiftKey && e.key === "I") {
+            e.preventDefault();
+        }
+
+        // Ctrl + U (ver código fonte)
+        if (e.ctrlKey && e.key === "u") {
+            e.preventDefault();
+        }
+
+    });
+    
+    document.addEventListener("contextmenu", function (e) {
+        e.preventDefault();
+    });
+
+    document.getElementById("cursorGigante")
+        .addEventListener("contextmenu", function (e) {
+            e.preventDefault();
+        });
+
+    function animar() {
+
+        // // movimento do mouse
+        // x += (mx - x) * 0.08;
+        // y += (my - y) * 0.08;
+
+
+        // cursor.style.left = x + "px";
+        // cursor.style.top = y + "px";
+
+        // rotação suave
+        rotacao += (alvoRotacao - rotacao) * 0.02;
+
+
+        cursor.style.transform =
+            `translate(-50%, -50%) rotate(${rotacao}deg)`;
+
+
+        requestAnimationFrame(animar);
+    }
+
+
+    animar();
+</script>
