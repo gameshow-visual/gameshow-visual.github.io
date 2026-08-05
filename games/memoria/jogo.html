@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="stylesheet" href="../../lib/css/padrao.css">
+    <link rel="stylesheet" href="css/index.css">
+    <script type="text/javascript" src="../../lib/javascript/padrao.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+    <script type="text/javascript" src="../../lib/efeitos/tsparticles.confetti.bundle.min.js"></script>
+</head>
+
+<style>
+    :root {
+        --confalt: 100px;
+        --conflar: 340px;
+    }
+
+    [barra-conf] {
+        top: -65px;
+        z-index: 9999;
+    }
+</style>
+
+<body onload="iniciar()">
+    <div barra-conf id="bar-conf">
+        <div barra-seta onclick="config()"></div>
+        <div barra-conteudo>
+            <button id="botacao" verde onclick="memoria('reiniciar');config();"
+                style="height: 50px; position: absolute; bottom: 5px; right: 5px;">iniciar</button>
+            <select id="modo" onchange="memoria('alterar', 'normal', value)"
+                style="height: 50px; width: 200px; position: absolute; bottom: 5px; left: 5px;">
+                <option selected disabled>MODO</option>
+                <option value="pares">Pares</option>
+                <option value="seguir">Seguir</option>
+            </select>
+        </div>
+    </div>
+    <div id="protetor"></div>
+    <div basecartas>
+        <div id="basecarta"></div>
+    </div>
+</body>
+
+<script>
+    function config() {
+        const div = document.getElementById('bar-conf').style;
+        if (div.top == '0px') {
+            div.top = '-65px';
+            div.opacity = "0.5";
+        } else {
+            div.top = '0px';
+            div.opacity = "1";
+        }
+    }
+</script>
+
+<script type="text/javascript" src="../../lib/efeitos/aplicar.js"></script>

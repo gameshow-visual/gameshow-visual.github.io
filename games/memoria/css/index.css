@@ -1,0 +1,106 @@
+:root {
+    --calt: 125px;
+    --clar: 125px;
+    --crad: 10px;
+    --cbor: 5px;
+}
+
+[basecartas],
+#basecarta {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    transition: all 0.25s;
+}
+
+
+[frente]>div {
+    font-size: 90px
+}
+
+[atras]>img {
+    width: 95%;
+    z-index: 1;
+}
+
+/* [carta] {
+        transform: rotateY(180deg) !important;
+    } */
+
+#protetor {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    cursor: no-drop;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+[pcarta] {
+    position: absolute;
+}
+
+@media screen and (orientation: landscape) {
+    [pcarta] {
+        transform: translate(-370px, 0px);
+    }
+}
+
+@media screen and (orientation: portrait) {
+    [pcarta] {
+        transform: translate(0px, -370px);
+    }
+}
+
+[btempcont] {
+    font-size: 35px;
+}
+
+[pcarta] {
+    /* z-index: 1; */
+    cursor: pointer;
+}
+
+[frente]>[info] {
+    visibility: hidden;
+    opacity: 0;
+    font-family: 'Chau';
+}
+
+[frente]:hover {
+    border: var(--cbor) solid rgb(255, 196, 0);
+    transition: none;
+}
+
+[frente]:hover>* {
+    transition: none;
+    color: rgb(255, 196, 0);
+}
+
+
+[cordefic] {
+    background-color: #003399;
+}
+
+#m1,
+#m2,
+#m3,
+#m4,
+#m5,
+#m6,
+#m7,
+#m8,
+#m9,
+#m10,
+#m11,
+#m12,
+#m13,
+#m14,
+#m15,
+#m16 {
+    opacity: 0;
+    visibility: hidden;
+}
