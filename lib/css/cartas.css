@@ -3,7 +3,6 @@
         [basecartas] {
             justify-content: center;
             align-items: center;
-            border: 1px solid blue;
             position: absolute;
             display: flex;
             flex-direction: row;
