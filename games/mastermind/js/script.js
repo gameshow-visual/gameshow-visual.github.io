@@ -59,6 +59,7 @@ function senhas(modo, opcao, valor) {
 
             sSel[0].box = false;
             sSel[0].cor = false;
+            vFinal[sValor[0].box - 1] = true;
 
             setTimeout(() => {
                 sumir('protecao');
@@ -379,7 +380,6 @@ function senhas(modo, opcao, valor) {
                         }
                         sSel[0].box = true;
                         sValor[0].box = valor;
-                        vFinal[sValor[0].box - 1] = true;
                         senhas('verificar');
                     }
                     break;
